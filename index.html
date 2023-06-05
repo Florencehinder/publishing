@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="src/images/logo.png"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Audio Book Publishing</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .book-container {
+        position: relative;
+        width: 200px;
+        height: 300px;
+      }
+
+      .book-cover {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .play-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.7);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .play-button:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+
+      .play-button-icon {
+        width: 40px;
+        height: 40px;
+        color: white;
+      }
+      .section.min-h-screen {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .div.flex.flex-col.justify-center.items-center {
+        width: 100%;
+        height: 100%;
+        padding-top: 100px; /* Add desired padding value */
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100">
+    <section class="min-h-screen">
+      <div class="flex flex-col justify-center items-center">
+        <div class="max-w-4xl p-4">
+          <div
+            class="book-container rounded-lg overflow-hidden shadow-lg items-center mx-auto justify-center mt-16"
+          >
+            <img
+              src="src/images/cover.jpg"
+              alt="Book Cover"
+              class="book-cover"
+            />
+            <div class="play-button">
+              <source
+                src="https://drive.google.com/file/d/1P11ioIiJcTWVBeJvCjwelq-Q4xvdZZ_r/view?usp=sharing"
+                type="audio/wav"
+              />
+              <svg
+                class="play-button-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                onclick="toggleAudio()"
+              >
+                <path
+                  fill="currentColor"
+                  d="M6 4h4v16H6zM14 4h4v16h-4z"
+                  id="pause-path"
+                ></path>
+                <path
+                  fill="currentColor"
+                  d="M8 5v14l11-7z"
+                  id="play-path"
+                ></path>
+              </svg>
+            </div>
+          </div>
+          <h1 class="text-4xl md:text-6xl font-bold text-center mb-6 mt-8">
+            Publish your audio book in minutes
+          </h1>
+          <p class="text-xl md:text-2xl text-center mb-8">
+            Import your ePub and generate human realistic AI voice narration
+            with human quality without any of the hassle.
+          </p>
+          <div class="flex justify-center">
+            <button
+              class="bg-purple-500 hover:bg-purple-700 text-white py-4 px-8 rounded"
+              onclick="openEmailPopup()"
+            >
+              Generate Sample
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="bg-gray-200">
+      <div
+        class="min-h-screen container mx-auto py-12 flex flex-col justify-center items-center"
+      >
+        <div class="flex justify-center">
+          <h1 class="text-4xl md:text-6xl font-bold text-center mb-16 mt-8">
+            Easy to Use
+          </h1>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-8">
+          <div
+            class="bg-white shadow-lg p-6 mx-4 rounded-xl w-full md:w-1/3 flex flex-col items-center justify-center"
+          >
+            <h2 class="text-2xl font-bold mb-4">Send us your book</h2>
+            <p class="mb-6">
+              Send us your book as an ePub and several high-quality samples of
+              your voice, or describe your ideal voice. We will generate a
+              sample for you.
+            </p>
+            <img
+              src="src/images/upload (1).svg"
+              alt="Feature 1"
+              class="w-32 h-32 mb-4"
+            />
+          </div>
+
+          <div
+            class="bg-white mx-4 shadow-lg p-6 rounded-xl w-full md:w-1/3 flex flex-col items-center justify-center"
+          >
+            <h2 class="text-2xl font-bold mb-4">Publish Your Audio Book</h2>
+            <p class="mb-6">
+              With almost no effort or time, you'll have a high-quality audio
+              book to publish on your desired platforms.
+            </p>
+            <img
+              src="src/images/headphones (1).svg"
+              alt="Feature 2"
+              class="w-32 h-32 mb-4"
+            />
+          </div>
+        </div>
+
+        <div class="flex justify-center mt-16">
+          <button
+            class="bg-purple-500 hover:bg-purple-700 text-white py-4 px-8 rounded"
+            onclick="openEmailPopup()"
+          >
+            Generate Sample
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <div class="w-full h-[1px] bg-gray-300 my-8"></div>
+  </body>
+</html>
+
+<script>
+  var audio = new Audio(
+    "https://drive.google.com/file/d/1P11ioIiJcTWVBeJvCjwelq-Q4xvdZZ_r/view?usp=sharing"
+  );
+  var isPlaying = false;
+
+  // Check the initial state of the audio player
+  audio.addEventListener("playing", function () {
+    isPlaying = true;
+    updateIcon();
+  });
+
+  audio.addEventListener("pause", function () {
+    isPlaying = false;
+    updateIcon();
+  });
+
+  function toggleAudio() {
+    if (isPlaying) {
+      pauseAudio();
+    } else {
+      playAudio();
+    }
+  }
+
+  function playAudio() {
+    audio.currentTime = 0; // Start playing from the beginning
+    audio.play();
+    isPlaying = true;
+    updateIcon();
+    setTimeout(pauseAudio, 23000); // Pause after 10 seconds
+  }
+
+  function pauseAudio() {
+    audio.pause();
+    isPlaying = false;
+    updateIcon();
+  }
+
+  function updateIcon() {
+    var playPath = document.getElementById("play-path");
+    var pausePath = document.getElementById("pause-path");
+    if (isPlaying) {
+      playPath.style.display = "none";
+      pausePath.style.display = "block";
+    } else {
+      playPath.style.display = "block";
+      pausePath.style.display = "none";
+    }
+  }
+
+  // Check the initial state of the audio player
+  if (audio.paused) {
+    isPlaying = false;
+    updateIcon();
+  } else {
+    isPlaying = true;
+    updateIcon();
+  }
+</script>
+
+<script>
+  function openEmailPopup() {
+    var subject = "Sample Audiobook Generation";
+    var body =
+      "Hi there,\n\nI'm interested in getting a sample audiobook generated from the following text:\n\n[add a 100 word snippet of your book]";
+    var mailtoLink =
+      "mailto:books@florencehinder.com" +
+      "?subject=" +
+      encodeURIComponent(subject) +
+      "&body=" +
+      encodeURIComponent(body);
+    window.location.href = mailtoLink;
+  }
+</script>
