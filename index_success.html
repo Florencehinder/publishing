@@ -148,7 +148,7 @@
               <input
                 type="email"
                 name="email"
-                placeholder="Your email address"
+                placeholder="Thanks for signing up!"
                 class="bg-white-500 hover:bg-white-700 text-purple py-4 mr-4 px-8 rounded"
               />
               <button
@@ -169,7 +169,7 @@
                 })
                   .then((response) => {
                     if (response.ok) {
-                      window.location.href = "index_success.html";
+                      window.location.href = "http://127.0.0.1:5500/index.html";
                       input.placeholder = "Thanks for signing up!";
                     }
                   })
