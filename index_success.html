@@ -226,12 +226,25 @@
         </div>
 
         <div class="flex justify-center mt-16">
+          <form
+          id="email-form"
+          action="https://script.google.com/macros/s/AKfycbyzzDZYoT2x2CSsKC5iRWxGkTEZJYxGLWBm77orc5523ejeQsmD4DmZyrq5T3Hvsjzcyw/exec"
+          method="post"
+        >
+          <label for="email"></label>
+          <input
+            type="email"
+            name="email"
+            placeholder="Thanks for signing up!"
+            class="bg-white-500 hover:bg-white-700 text-purple py-4 mr-4 px-8 rounded"
+          />
           <button
             class="bg-purple-500 hover:bg-purple-700 text-white py-4 px-8 rounded"
-            onclick="openEmailPopup()"
+            type="submit"
           >
-            Generate Your Audiobook
+            Sign Up
           </button>
+        </form>
         </div>
       </div>
     </section>

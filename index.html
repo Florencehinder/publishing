@@ -141,7 +141,7 @@
           <div class="flex justify-center">
             <form
               id="email-form"
-              action="https://script.google.com/macros/s/AKfycbyzExpurHlDYhAQS3nEA_2rrGZtIiMlQoWkvf8gJq4IPzD5NK7kuCsTB9dQbOGi0oKn/exec"
+              action="https://script.google.com/macros/s/AKfycbyzzDZYoT2x2CSsKC5iRWxGkTEZJYxGLWBm77orc5523ejeQsmD4DmZyrq5T3Hvsjzcyw/exec"
               method="post"
             >
               <label for="email"></label>
@@ -226,12 +226,43 @@
         </div>
 
         <div class="flex justify-center mt-16">
+          <form
+          id="email-form-2"
+          action="https://script.google.com/macros/s/AKfycbyzzDZYoT2x2CSsKC5iRWxGkTEZJYxGLWBm77orc5523ejeQsmD4DmZyrq5T3Hvsjzcyw/exec"
+          method="post"
+        >
+          <label for="email"></label>
+          <input
+            type="email"
+            name="email"
+            placeholder="Your email address"
+            class="bg-white-500 hover:bg-white-700 text-purple py-4 mr-4 px-8 rounded"
+          />
           <button
             class="bg-purple-500 hover:bg-purple-700 text-white py-4 px-8 rounded"
-            onclick="openEmailPopup()"
+            type="submit"
           >
-            Generate Your Audiobook
+            Sign Up
           </button>
+        </form>
+        <script>
+          document.getElementById("email-form-2").addEventListener("submit", function (e) {
+            e.preventDefault();
+      
+            var input = document.querySelector("#email-form input[name=email]");
+            fetch(this.action, {
+              method: this.method,
+              body: new FormData(this),
+            })
+              .then((response) => {
+                if (response.ok) {
+                  window.location.href = "index_success.html";
+                  input.placeholder = "Thanks for signing up!";
+                }
+              })
+              .catch((error) => console.error(error));
+          });
+        </script>
         </div>
       </div>
     </section>
@@ -296,20 +327,5 @@
   } else {
     isPlaying = true;
     updateIcon();
-  }
-</script>
-
-<script>
-  function openEmailPopup() {
-    var subject = "Sample Audiobook Generation";
-    var body =
-      "Hi there,\n\nI'm interested in getting a sample audiobook generated from the following text:\n\n[add a 100 word snippet of your book]";
-    var mailtoLink =
-      "mailto:florencehinder@gmail.com" +
-      "?subject=" +
-      encodeURIComponent(subject) +
-      "&body=" +
-      encodeURIComponent(body);
-    window.location.href = mailtoLink;
   }
 </script>
