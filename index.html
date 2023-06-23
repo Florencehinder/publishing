@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+
     <!-- Google tag (gtag.js) -->
     <script
       async
@@ -15,22 +16,17 @@
 
       gtag("config", "G-1QFB72N12L");
     </script>
-    <!-- Hotjar Tracking Code for my site -->
-    <script>
-      (function (h, o, t, j, a, r) {
-        h.hj =
-          h.hj ||
-          function () {
-            (h.hj.q = h.hj.q || []).push(arguments);
-          };
-        h._hjSettings = { hjid: 2660205, hjsv: 6 };
-        a = o.getElementsByTagName("head")[0];
-        r = o.createElement("script");
-        r.async = 1;
-        r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+   <!-- Hotjar Tracking Code for florencehinder.com -->
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:3546613,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
         a.appendChild(r);
-      })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv=");
-    </script>
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
     <link
       rel="icon"
       type="image/png"
@@ -141,7 +137,7 @@
           <div class="flex justify-center">
             <form
             id="email-form"
-            action="https://script.google.com/macros/s/AKfycbyzzDZYoT2x2CSsKC5iRWxGkTEZJYxGLWBm77orc5523ejeQsmD4DmZyrq5T3Hvsjzcyw/exec"
+            action="https://script.google.com/macros/s/AKfycbxbBduuz-HZHsXeeQJspXiIWEePtvkiyE3go4aO_g7--fhvvbAO_pY8470ejKic_Sz6_Q/exec"
             method="post"
             class="flex flex-col items-center"
           >
@@ -161,24 +157,24 @@
               </button>
             </div>
           </form>
-            <script>
-              document.getElementById("email-form").addEventListener("submit", function (e) {
-                e.preventDefault();
-          
-                var input = document.querySelector("#email-form input[name=email]");
-                fetch(this.action, {
-                  method: this.method,
-                  body: new FormData(this),
+          <script>
+            document.getElementById("email-form").addEventListener("submit", function (e) {
+              e.preventDefault();
+        
+              var input = document.querySelector("#email-form input[name=email]");
+              fetch(this.action, {
+                method: this.method,
+                body: new FormData(this),
+              })
+                .then((response) => {
+                  if (response.ok) {
+                    window.location.href = "index_success.html";
+                    input.placeholder = "Thanks for signing up!";
+                  }
                 })
-                  .then((response) => {
-                    if (response.ok) {
-                      window.location.href = "index_success.html";
-                      input.placeholder = "Thanks for signing up!";
-                    }
-                  })
-                  .catch((error) => console.error(error));
-              });
-            </script>
+                .catch((error) => console.error(error));
+            });
+          </script>
           </div>
           </div>
         </div>
